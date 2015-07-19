@@ -12,7 +12,7 @@ I should mention that some texts and examples have been copied from the official
 2. [Basic Query Syntax](#)
 3. [Querying with Field Aliases and Fragments](#)
 4. [Querying with Directives](#)
-5. [On the Server-Side: Creating Your First Schema](#)
+5. [On the Server-Side - Creating Your First Schema](#)
 6. [A Working GraphQL Server in Nodejs](#)
 7. [Deep Dive into GraphQL Type System](#)
 8. [Mutations](#)

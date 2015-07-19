@@ -1,0 +1,12 @@
+[
+    "What is GraphQL",
+    "Basic Query Syntax",
+    "Querying with Field Aliases and Fragments",
+    "Querying with Directives",
+    "On the Server-Side - Creating Your First Schema",
+    "A Working GraphQL Server in Nodejs",
+    "Deep Dive into GraphQL Type System",
+    "Mutations",
+    "Introspection",
+    "A Working GraphQL Server v2"
+]
