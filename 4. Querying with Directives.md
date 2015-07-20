@@ -1,0 +1,93 @@
+# Querying with Directives
+
+In some cases you need to provide options to alter GraphQL’s execution behavior in ways field arguments may not suffice, such as conditionally including or skipping a field. Directives enables us to do just that.
+
+Right now GraphQL comes with two directives-
+`@skip` and `@include`, but future extensions to it may include more.
+
+## `@skip`
+
+The `@skip` directive may be provided for fields or fragments, and allows for conditional exclusion as described by the if argument.
+
+In this example `experimentalField` will be queried only if the `$someTest` is provided a `false` value.
+
+```
+query myQuery($someTest: Boolean) {
+  experimentalField @skip(if: $someTest)
+}
+```
+
+## `@include`
+
+The `@include` directive may be provided for fields or fragments, and allows for conditional inclusion during execution as described by the if argument.
+
+In this example `experimentalField` will be queried only if the `$someTest` is provided a `true` value.
+
+```
+query myQuery($someTest: Boolean) {
+  experimentalField @include(if: $someTest)
+}
+```
+
+Just a note, the `@skip` directive has precedence over the `@include` directive should both be provided in the same context.
+
+> If you are still with me, you have probably noticed the use of variables in GraphQL queries. *Well, does this work? How does it work? Like view templates? What's the benefit of writing our queries this way? How do you assign values to these variables? How do you send these queries to server? By assigning values in place? Or the values are passed seperately?*
+>
+> I know. I have asked all those questions the moment I saw this syntax for the first time.
+>
+> Well, for starter, the purpose of writing queries this way is to make them reusable and generic.
+>
+> We don't need anything special to place values of these variables inline to GraphQL query before sending it to server. Generic queries are not like view templates, we don't need to "compile" them with values. Instead, we send the values to our variables as separate JSON objects.
+>
+> The GraphQL server will take the query and parameters from request body and parse them. The `graphql` function, that the server-side GraphQL API exposes, takes the following parameters:
+>
+>  `graphql(schema, graphQuery, rootValue, variableValues, operationName)`
+>
+> We can provide our query as `graphQuery` and variable values as `variableValues`. We'll talk about rest of the things in these parameters in successive parts of this series.
+
+As an working example, we can use this simple nodejs app to post queries to endpoint that accepts GraphQL queries.
+
+(*We have used some ES2015 goodies here, if something doesn't feel familiar please check on new features of ES2015. We are using `Babel` to automatically transpile our ES2015 code to ES5, since nodejs doesn't have all the necessary parts in its core to natively run ES2015, yet.*)
+
+In terminal:
+```
+npm i babel request
+touch index.js server.js
+```
+
+Put the follwoing in `index.js`. We'll run this file with node:
+```
+// By requiring `babel/register`, all of our successive requires will be transpiled by Babel.
+require('babel/register');
+require('./server.js');
+```
+
+In our `server.js` file:
+```
+import {request} from 'request';
+
+const SERVER_URL = 'https://graphql.example.com/';
+
+let query = `
+  query myQuery($someTest: Boolean) {
+  experimentalField @include(if: $someTest)
+}
+`;
+
+let params = {
+  someTest: true
+};
+
+//Unlike REST, GraphQL doesn't specify which HTTP Verb to use.
+//POST seems to be a right fit here.
+request.post(SERVER_URL, {
+  query,
+  params
+}, (err, res, body) => {
+  // Handle response
+});
+```
+
+This example is here just to show how to post a GraphQL query programmatically in nodejs. Of course the same can be achieved with `curl`, `httpie`, `XMLHttpRequest` or the modern `fetch` API in browsers.
+
+Now what about the GraphQL server that'll process the query? We haven't talked anything about how to write a GraphQL server yet. Let's start that in the next part.
