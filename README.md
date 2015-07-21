@@ -4,8 +4,6 @@ This repository is my attempt to learn GraphQL by going through the [official RF
 
 The Official Specification is meant for anyone who wants to implement GraphQL core in any language. I felt the need of a simpler version that talks only JavaScript in its APIs and examples instead of being generic, so I wrote it down myself and shared with hope that others might find it useful too.  
 
-I should mention that some texts and examples have been copied from the official documents and then have been simplified for GraphQL beginners like me.
-
 ##Table of Content:
 
 1. [What is GraphQL](#)
@@ -22,7 +20,7 @@ I should mention that some texts and examples have been copied from the official
 
 ##Plan
 
-I intend to use these documents to make workshopper lessons. Contributions are welcome.
+I intend to use these documents to make workshopper lessons. Any kind of contributions are welcome, more if you feel like adding tasks and test suits in the workshopper.
 
 ##License
 MIT
