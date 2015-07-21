@@ -2,17 +2,22 @@
   "name": "learning-graphql",
   "version": "0.0.1",
   "description": "Learning GraphQL through a terminal workshop.",
-  "main": "index.js",
+  "author": "Mehdi Hasan Khan <mhasan@omicronlab.com>",
+  "contributors": [],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Mehdi Hasan Khan <mhasan@omicronlab.com>",
   "license": "MIT",
-  "repository" : { "type" : "git",
+  "repository" : {
+    "type" : "git",
     "url" : "https://github.com/mugli/learning-graphql"
   },
   "dependencies": {
     "workshopper": "^2.7.0",
     "workshopper-exercise": "^2.4.0"
-  }
+  },
+  "bin": {
+    "learning-graphql": "./learning-graphql.js"
+  },
+  "preferGlobal": true
 }
