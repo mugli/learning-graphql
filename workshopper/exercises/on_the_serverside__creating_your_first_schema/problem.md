@@ -65,7 +65,7 @@ var schema = new GraphQLSchema({
         args: {
           greet: { type: GraphQLString }
         },
-        //Using ES2015 Destructuring to assign value to greet
+        //Using Destructuring of ES2015 to assign value to greet
         resolve: (root, {greet}) => {
           greet = greet ? greet + '!' : 'world!';
           return greet;

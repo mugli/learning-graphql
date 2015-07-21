@@ -55,7 +55,7 @@ npm i babel request
 touch index.js server.js
 ```
 
-Put the follwoing in `index.js`. We'll run this file with node:
+Put the follwoing in `index.js`. **We'll run this file with node**:
 ```
 // By requiring `babel/register`, all of our successive requires will be transpiled by Babel.
 require('babel/register');
@@ -88,6 +88,6 @@ request.post(SERVER_URL, {
 });
 ```
 
-This example is here just to show how to post a GraphQL query programmatically in nodejs. Of course the same can be achieved with `curl`, `httpie`, `XMLHttpRequest` or the modern `fetch` API in browsers.
+This example is here just to show how to post a GraphQL query programmatically in nodejs. Of course the same can be achieved with `curl`, `Postman`, `httpie`, `XMLHttpRequest` or the modern `fetch` API in browsers.
 
 Now what about the GraphQL server that'll process the query? We haven't talked anything about how to write a GraphQL server yet. Let's start that in the next part.
