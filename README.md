@@ -6,16 +6,16 @@ The Official Specification is meant for anyone who wants to implement GraphQL co
 
 ##Table of Content:
 
-1. [What is GraphQL](#)
-2. [Basic Query Syntax](#)
-3. [Querying with Field Aliases and Fragments](#)
-4. [Querying with Directives](#)
-5. [On the Server-Side - Creating Your First Schema](#)
-6. [A Working GraphQL Server in Nodejs](#)
-7. [Deep Dive into GraphQL Type System](#)
-8. [Mutations](#)
-9. [Introspection](#)
-10. [A Working GraphQL Server v2](#)
+1. [What is GraphQL](https://github.com/mugli/learning-graphql/blob/master/1.%20What%20is%20GraphQL.md)
+2. [Basic Query Syntax](https://github.com/mugli/learning-graphql/blob/master/2.%20Basic%20Query%20Syntax.md)
+3. [Querying with Field Aliases and Fragments](https://github.com/mugli/learning-graphql/blob/master/3.%20Querying%20with%20Field%20Aliases%20and%20Fragments.md)
+4. [Querying with Directives](https://github.com/mugli/learning-graphql/blob/master/4.%20Querying%20with%20Directives.md)
+5. [On the Server-Side - Creating Your First Schema](https://github.com/mugli/learning-graphql/blob/master/5.%20On%20the%20Server-Side%20-%20Creating%20Your%20First%20Schema.md)
+6. [A Working GraphQL Server in Nodejs](https://github.com/mugli/learning-graphql/blob/master/6.%20A%20Working%20GraphQL%20Server%20in%20Nodejs.md)
+7. [Deep Dive into GraphQL Type System](https://github.com/mugli/learning-graphql/blob/master/7.%20Deep%20Dive%20into%20GraphQL%20Type%20System.md)
+8. Mutations (TBD)
+9. Introspection (TBD)
+10. A Working GraphQL Server v2 (TBD)
 
 
 ##Plan

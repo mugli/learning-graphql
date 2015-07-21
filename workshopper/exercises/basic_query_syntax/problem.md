@@ -1,4 +1,4 @@
-# Basic Query syntax
+# Part 2: Basic Query syntax
 
 
 GraphQL queries look a lot like JSON objects without data. And you know what? I'm glad they did it this way.

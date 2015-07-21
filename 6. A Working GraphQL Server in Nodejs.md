@@ -1,4 +1,4 @@
-# A working GraphQL Server
+# Part 6: A working GraphQL Server
 
 Let's build a real server which can parse GraphQL queries sent over HTTP.
 

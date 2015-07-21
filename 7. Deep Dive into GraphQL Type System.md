@@ -1,4 +1,4 @@
-# Deep Dive into GraphQL Type System
+# Part 7: Deep Dive into GraphQL Type System
 
 This part may feel more like manuals than a tutorial. I wrote it to save myself from jumping between GraphQL RFC Spec and the test suit of reference JavaScript implementation. I'll be glad if it saves some of your time too.
 

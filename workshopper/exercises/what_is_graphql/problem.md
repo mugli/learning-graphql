@@ -1,4 +1,4 @@
-# What is GraphQL
+# Part 1: What is GraphQL
 
 ```
   _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _

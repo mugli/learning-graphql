@@ -1,4 +1,4 @@
-# Querying with Directives
+# Part 4: Querying with Directives
 
 In some cases you need to provide options to alter GraphQL’s execution behavior in ways field arguments may not suffice, such as conditionally including or skipping a field. Directives enables us to do just that.
 

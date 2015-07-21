@@ -1,4 +1,4 @@
-# On the server-side - Creating your first schema
+# Part 5: On the server-side - Creating your first schema
 
 We've learnt a great deal of how to prepare GraphQL queries. Let's dive into next step, on building our own GraphQL server.
 

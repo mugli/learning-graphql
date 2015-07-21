@@ -1,4 +1,4 @@
-# Querying with Field Aliases & Fragments
+# Part 3: Querying with Field Aliases & Fragments
 
 We have seen basic query with parameters. Let's get into deeper water.
 

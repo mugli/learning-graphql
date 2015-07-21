@@ -8,6 +8,9 @@
   },
   "author": "Mehdi Hasan Khan <mhasan@omicronlab.com>",
   "license": "MIT",
+  "repository" : { "type" : "git",
+    "url" : "https://github.com/mugli/learning-graphql"
+  },
   "dependencies": {
     "workshopper": "^2.7.0",
     "workshopper-exercise": "^2.4.0"
