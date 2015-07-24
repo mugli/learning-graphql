@@ -13,7 +13,7 @@ The Official Specification is meant for anyone who wants to implement GraphQL co
 5. [On the Server-Side - Creating Your First Schema](https://github.com/mugli/learning-graphql/blob/master/5.%20On%20the%20Server-Side%20-%20Creating%20Your%20First%20Schema.md)
 6. [A Working GraphQL Server in Nodejs](https://github.com/mugli/learning-graphql/blob/master/6.%20A%20Working%20GraphQL%20Server%20in%20Nodejs.md)
 7. [Deep Dive into GraphQL Type System](https://github.com/mugli/learning-graphql/blob/master/7.%20Deep%20Dive%20into%20GraphQL%20Type%20System.md)
-8. Mutations (TBD)
+8. [Mutations](https://github.com/mugli/learning-graphql/blob/master/8.%20Mutations.md)
 9. Introspection (TBD)
 10. A Working GraphQL Server v2 (TBD)
 
