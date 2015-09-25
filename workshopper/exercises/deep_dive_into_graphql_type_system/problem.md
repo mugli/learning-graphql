@@ -1,8 +1,8 @@
 # Part 7: Deep Dive into GraphQL Type System
 
-This part may feel more like manuals than a tutorial. I wrote it to save myself from jumping between GraphQL RFC Spec and the test suit of reference JavaScript implementation. I'll be glad if it saves some of your time too.
+This part may feel more like a manual than a tutorial. I wrote it to save myself from jumping between GraphQL RFC Spec and the test suit of the reference JavaScript implementation.
 
-At the heart of any GraphQL implementation is a description of what types of objects it can return, described with a GraphQL type system.
+At the heart of any GraphQL implementation, there is a description of what types of objects it can return, described with a GraphQL type system.
 
 The JavaScript implementation has the following named types implemented in it:
 
@@ -20,7 +20,7 @@ Scalar types hold a single value. GraphQL provides a basic set of well‐defined
 
 `GraphQLID` (integer or string of any format)
 
-Other types:
+## Other types:
 
 ## `GraphQLObjectType`
 

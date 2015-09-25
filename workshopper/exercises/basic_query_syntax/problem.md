@@ -1,12 +1,16 @@
 # Part 2: Basic Query syntax
 
 
-GraphQL queries look a lot like JSON objects without data. And you know what? I'm glad they did it this way.
+GraphQL queries look a lot like JSON objects without data. I'm glad they did it this way.
+
+Consider this JSON object:
 
 ```
-// a json object
+// A JSON object
 {
-  "user": "name"
+  "user": {
+    "name": "Lee Byron"
+  }
 }
 
 ```
@@ -23,7 +27,7 @@ A similar GraphQL query would be:
 
 ```
 
-When the server responds it just pour data in those empty properties. Could it be any more simpler than that!
+When the server responds it just pours data into those empty properties.
 
 ```
 // Response:
@@ -36,6 +40,9 @@ When the server responds it just pour data in those empty properties. Could it b
 }
 
 ```
+Could it be any simpler than that!
+
+## Parameters
 
 You can also use parameters in GraphQL queries:
 
@@ -48,9 +55,9 @@ query fetchUser {
 }
 ```
 
-*Now wait a minute! That looks more than the promised simple JSON object without data. What are those `query` and `fetchUser` things doing here? God forbid, I hope you aren't trying to sell me OData disguised as graphshit!*
+*Now wait a minute! That looks more than the promised simple JSON object without data. What are those `query` and `fetchUser` things doing here? I hope you aren't trying to sell me OData disguised as graphshit! Are you?*
 
-I'm not. And I'm glad that you are paying attention. In my opinion, GraphQL's approach is much elegant than that initiative of Microsoft.
+I'm not. And I'm glad that you are paying attention. In my opinion, GraphQL's approach is much more elegant than that initiative of Microsoft.
 
 ## Anatomy of a GraphQL Query:
 
@@ -65,23 +72,23 @@ query fetchUser {
 }
 ```
 
-`query` is an GraphQL `Operation`. It, as you might guess, fetches the data from server. It is read-only, you cannot modify data with `query` operations.
+* `query` is an GraphQL `Operation`. It, as you might guess, fetches the data from server. This `query` operation is read-only, you cannot modify data with it.
 
- > The other valid value for GraphQL operation is `mutation`, which we can use to create, update or delete data and fetch the updated result (*doing CRUD, remember? Need to do them all!*). We'll discuss more on mutations later.
+> The other valid value for GraphQL operation is `mutation`, which we can use to create, update or delete data and fetch the updated result (*doing CRUD, remember? Need to be able to do them all!*). We'll discuss more on mutations later.
 
-`fetchUser` is just an arbitrary name of your query. You'll write whatever you feel right here. A meaningful name will make sense later to other developers about what the query does in short. Yeah,  [that's one of the hardest things to do in computer science](http://martinfowler.com/bliki/TwoHardThings.html)!
+* `fetchUser` is just an arbitrary name of your query. You'll write whatever you feel right here. A meaningful name will make sense later to other developers about what the query does in short. Yeah, [that's one of the hardest things to do in computer science :( )](http://martinfowler.com/bliki/TwoHardThings.html)!
 
-`user` is called `field`. And `name` is a sub-field, you might say .
+* `user` is called a `field`. And `name` is a sub-field, you might say.
 
-`id: "1"` is the `argument` on `user` field. Arguments are unordered, by the way. `picture(width: 200, height: 100)` and `picture(height: 100, width: 200)` means same to a GraphQL server.
+* `id: "1"` is the `argument` on the `user` field. Arguments are unordered, by the way. `picture(width: 200, height: 100)` and `picture(height: 100, width: 200)` means the same to a GraphQL server.
 
-And this whole darn thing is called a `document`.
+* And this whole darn thing is called a `document`.
 
 
 ----------
 
 
-However, if a query has no `arguments` or `directives` (we will discuss directives later, for now just assume its another piece of the whole puzzle) or `name`, the `query` keyword can be omitted. We did that with our first example above:
+However, if a query has no `arguments` or `directives` (we will discuss directives later, for now just assume it's another piece of the whole puzzle) or `name`, the `query` keyword can be omitted. GraphQL server will default to that. We used that shortcut with our first example above:
 
 ```
 // Request:

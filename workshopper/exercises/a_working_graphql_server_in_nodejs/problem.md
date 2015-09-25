@@ -42,7 +42,7 @@ let dummyData = {
   '4': 'andimarek'
 };
 
-export var schema = new GraphQLSchema({
+export default new GraphQLSchema({
   query: new GraphQLObjectType({
     name: 'RootQueryType',
     fields: {
@@ -60,13 +60,13 @@ export var schema = new GraphQLSchema({
   })
 });
 ```
-You are probably already familiar with `koa`/`express`/`restify`.  This part is easiest for you then:
+You are probably already familiar with `koa`/`express`/`restify`.  This part is easiest for you in that case:
 
 ```
 //server.js
 import restify from 'restify';
 import { graphql } from 'graphql';
-import { schema } from './schema.js';
+import schema from './schema.js';
 
 var server = restify.createServer({
   name: 'GraphQL Demo'

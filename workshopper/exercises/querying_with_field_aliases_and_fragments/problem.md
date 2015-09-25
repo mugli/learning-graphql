@@ -1,10 +1,10 @@
 # Part 3: Querying with Field Aliases & Fragments
 
-We have seen basic query with parameters. Let's get into deeper water.
+We have seen basic queries with parameters. Let's get into deeper water.
 
 ## Field Aliases
 
-Consider the GraphQL query from previous part:
+Consider the GraphQL query from the previous section:
 
 ```
 // Request
@@ -26,7 +26,7 @@ query FetchUser {
 
 What if you need to fetch multiple users in a single query? You already have `user` as the property of `data` object, how would you fit another user there?
 
-`Field Aliases` can be handy in these cases. You can give your fields any valid name you want, and the response will match that query.
+`Field Aliases` can be handy in these cases. You can give your fields any valid name you want, and the response will match that query. (`user` is called a `field` here, you remember that from the previous lesson, right?)
 
 ```
 // Request
@@ -48,15 +48,15 @@ The `field` name `user` is still the same, you are just instructing GraphQL serv
   data: {
     lee: {
       name: "Lee Byron"
-    }
+    },
     sam: {
-      name: "Sam "
+      name: "Sam"
     }
   }
 }
 ```
 
-By the way, using comma between GraphQL `field`s is optional. You can use them between lee and sam if that makes you comfortable:
+By the way, using a comma between `field`s in a GraphQL query is optional. You can use them between `lee` and `sam` if that makes you comfortable, like this:
 
 ```
 // Request
@@ -72,7 +72,7 @@ query FetchLeeAndSam {
 
 ## Fragments
 
-Now imagine our product manager suddenly came and asked to include Lee and Sam's email address. We could do so with this query of course:
+Now imagine your product manager suddenly came and asked to include Lee and Sam's email addresses to the UI. We could ask for the new data with this query of course:
 
 ```
 // Request
@@ -88,7 +88,7 @@ query FetchLeeAndSam {
 }
 ```
 
-We can already see that we are repeating ourselves. Since we have to add new fields to both parts of the query, things are looking odd. Instead, we can extract out the common fields into a `fragment`, and reuse the fragment in the query, like this:
+We can already see that we are repeating ourselves. Since we have to add new fields (email) to both parts of the query, things are looking a bit odd. Instead, we can extract out the common fields into a `fragment`, and reuse the fragment in the query, like this:
 
 ```
 // Request
@@ -101,15 +101,16 @@ query FetchWithFragment {
   }
 }
 
-fragment UserFragment on UserFragment {
+fragment UserFragment on User {
   name
   email
 }
+
 ```
 
-> This `...` is called spread operator. If you are familiar with the new features of ES2015 you have already seen similar syntax there.
+> This `...` is called the spread operator. If you are familiar with the new features of ES6/ES2015, you already have used similar syntax there.
 >
-> The `on User` tells that the `UserFragment` can only be applied on `User` type. We'll go through the details of type system later.
+> The `on User` tells us that the `UserFragment` can only be applied to the `User` type. I already gave you a hint that GraphQL is strongly-typed, we'll go through the details of the type system later.
 
 Both of those queries give this result:
 
@@ -133,9 +134,12 @@ The `FetchLeeAndSam` and `FetchWithFragment` queries will both get the same resu
 
 ##Inline Fragment
 
-There is another thing called `inline fragments`, which as you might have guessed, can be defined inline to queries. This is done to conditionally execute fields based on their runtime type.
+There is another similar thing called `inline fragments`, which as you might have guessed, can be defined inline to queries. This is done to conditionally execute fields based on their runtime type.
 
-In our following example we'll get sequels in case of "The Matrix", which is of Movie type and episodes for "Mr. Robot", which is of Tvshow type.
+In the following example, based on the type of the show, we will get:
+
+- sequels for the "The Matrix" show, which is of the `Movie` type
+- episodes for the "Mr. Robot" show, which is of the `Tvshow` type.
 
 ```
 query inlineFragmentTyping {
@@ -156,5 +160,6 @@ query inlineFragmentTyping {
   }
 }
 ```
+
 
 There are other ways to conditionally modify a query. `Directive` plays the key role in that and we are going to talk about them in the next part.

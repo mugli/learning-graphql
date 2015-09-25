@@ -2,7 +2,9 @@
 
 This repository is my attempt to learn GraphQL by going through the [official RFC specification](http://facebook.github.io/graphql/) and the [sample JavaScript implementation](https://github.com/graphql/graphql-js).
 
-The Official Specification is meant for anyone who wants to implement GraphQL core in any language. I felt the need of a simpler version that talks only JavaScript in its APIs and examples instead of being generic, so I wrote it down myself and shared with hope that others might find it useful too.  
+The Official Specification is meant for anyone who wants to implement GraphQL core in any language. I felt the need of a simpler version that speaks only JavaScript in its APIs and examples instead of being generic, so I wrote it down myself and shared with hope that others might find it useful too.
+
+**Update:** [graphql.org](http://graphql.org/) site came out later, which took more straightforward approach to documenting it. I've updated the contents of this series taking a lot from this new dedicated site for GraphQL.
 
 ##Table of Content:
 
