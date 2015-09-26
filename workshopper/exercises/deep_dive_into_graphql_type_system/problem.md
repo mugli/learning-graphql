@@ -263,3 +263,190 @@ var ComplicatedArgs = new GraphQLObjectType({
 });
 
 ```
+
+
+## Bonus: Creating custom scalar types
+
+In addition to built-in scalars, you can define your own custom scalar types. It is mostly helpful for doing fine-grained validations. In a lot of cases you might want to check if an email, date-time or url format is valid. It is easily doable by defining your custom email/datetime/url scalars.
+
+Here's a complete example of how to define a custom Email type with validation:
+
+```
+
+import {
+  graphql,
+  GraphQLSchema,
+  GraphQLObjectType,
+  GraphQLString,
+  GraphQLScalarType
+} from 'graphql';
+
+import { GraphQLError } from 'graphql/error';
+import { Kind } from 'graphql/language';
+
+var EmailType = new GraphQLScalarType({
+    name: 'Email',
+    serialize: value => {
+      return value;
+    },
+    parseValue: value => {
+      return value;
+    },
+    parseLiteral: ast => {
+      if (ast.kind !== Kind.STRING) {
+        throw new GraphQLError('Query error: Can only parse strings got a: ' + ast.kind, [ast]);
+      }
+
+      // Regex taken from: http://stackoverflow.com/a/46181/761555
+      var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+      if(!re.test(ast.value)) {
+        throw new GraphQLError('Query error: Not a valid Email', [ast]);
+      }
+
+      return ast.value;
+    }
+});
+
+var schema = new GraphQLSchema({
+  query: new GraphQLObjectType({
+    name: 'RootQueryType',
+    fields: {
+      echo: {
+        type: GraphQLString,
+        args: {
+          email: { type: EmailType }
+        },
+        resolve: (root, {email}) => {
+          return email;
+        }
+      }
+    }
+  })
+});
+
+var query = `
+  query Welcome {
+    echo (email: "hi@example.com")
+  }
+`;
+
+graphql(schema, query).then((result) => {
+
+  // Prints
+  // {
+  //   echo: { 'hi@example.com' }
+  // }
+  console.log(result);
+});
+
+
+```
+
+You'll get an error if you provide a malformed email parameter to our echo query:
+
+```
+// ... truncated
+
+var query = `
+  query Welcome {
+    echo (email: "hi")
+  }
+`;
+
+graphql(schema, query).then((result) => {
+
+   // Prints
+   // { errors: [ { [Error: Query error: Not a valid Email] message: 'Query error: Not a valid Email' } ] }
+
+  console.log(result);
+});
+
+```
+
+If you need to define similar custom scalar types for date, time, date-time, url etc., defining all of them separately is going to be a lot of boilerplate code, right?
+
+We can refactor the above code like this to avoid that:
+
+```
+import {
+  graphql,
+  GraphQLSchema,
+  GraphQLObjectType,
+  GraphQLString,
+  GraphQLScalarType
+} from 'graphql';
+
+import { GraphQLError } from 'graphql/error';
+import { Kind } from 'graphql/language';
+
+var ValidateStringType = (params) => {
+  return new GraphQLScalarType({
+    name: params.name,
+    serialize: value => {
+      return value;
+    },
+    parseValue: value => {
+      return value;
+    },
+    parseLiteral: ast => {
+      if (ast.kind !== Kind.STRING) {
+        throw new GraphQLError("Query error: Can only parse strings got a: " + ast.kind, [ast]);
+      }
+      if (ast.value.length < params.min) {
+        throw new GraphQLError(`Query error: minimum length of ${params.min} required: `, [ast]);
+      }
+      if (ast.value.length > params.max){
+        throw new GraphQLError(`Query error: maximum length is ${params.max}: `, [ast]);
+      }
+      if(params.regex !== null) {
+        if(!params.regex.test(ast.value)) {
+          throw new GraphQLError(`Query error: Not a valid ${params.name}: `, [ast]);
+        }
+      }
+      return ast.value;
+    }
+  })
+};
+
+var EmailType = ValidateStringType({
+  name: 'Email',
+  min: 4,
+  max: 254,
+  regex: /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i
+});
+
+var schema = new GraphQLSchema({
+  query: new GraphQLObjectType({
+    name: 'RootQueryType',
+    fields: {
+      echo: {
+        type: GraphQLString,
+        args: {
+          email: { type: EmailType }
+        },
+        resolve: (root, {email}) => {
+          return email;
+        }
+      }
+    }
+  })
+});
+
+var query = `
+  query Welcome {
+    echo (email: "hi@example.com")
+  }
+`;
+
+graphql(schema, query).then((result) => {
+
+  // Prints
+  // {
+  //   echo: { 'hi@example.com' }
+  // }
+  console.log(result);
+});
+
+```
+
+Now you can define more custom scalar types using `ValidateStringType` function. *Thanks [pyros2097](https://github.com/pyros2097) for the suggestion and `ValidateStringType` snippet!*
