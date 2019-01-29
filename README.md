@@ -1,4 +1,4 @@
-#Learning GraphQL
+# Learning GraphQL
 
 This repository is my attempt to learn GraphQL by going through the [official RFC specification](http://facebook.github.io/graphql/) and the [sample JavaScript implementation](https://github.com/graphql/graphql-js).
 
@@ -6,7 +6,7 @@ The Official Specification is meant for anyone who wants to implement GraphQL co
 
 **Update:** [graphql.org](http://graphql.org/) site came out later, which took more straightforward approach to documenting it. I've updated the contents of this series taking a lot from this new dedicated site for GraphQL.
 
-##Table of Content:
+## Table of Content:
 
 1. [What is GraphQL](https://github.com/mugli/learning-graphql/blob/master/1.%20What%20is%20GraphQL.md)
 2. [Basic Query Syntax](https://github.com/mugli/learning-graphql/blob/master/2.%20Basic%20Query%20Syntax.md)
@@ -20,9 +20,9 @@ The Official Specification is meant for anyone who wants to implement GraphQL co
 10. A Working GraphQL Server v2 (TBD)
 
 
-##Plan
+## Plan
 
 I intend to use these documents to make workshopper lessons. Any kind of contributions are welcome, more if you feel like adding tasks and test suits in the workshopper.
 
-##License
+## License
 MIT
