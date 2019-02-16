@@ -30,7 +30,7 @@ MIT
 
 ## More Resources
 
-- [How to GraphQL](www.howtographql.com): Fullstack Tutorial Website to Learn GraphQL 
-- [Explore GraphQL](www.graphql.com): Great collection of articles, case studies and real-world use cases all around GraphQL
-- [GraphQL Radio](www.graphqlradio.com): Podcast all around the GraphQL eco-system
+- [How to GraphQL](https://www.howtographql.com): Fullstack Tutorial Website to Learn GraphQL 
+- [Explore GraphQL](https://www.graphql.com): Great collection of articles, case studies and real-world use cases all around GraphQL
+- [GraphQL Radio](https://www.graphqlradio.com): Podcast all around the GraphQL eco-system
 - [GraphQL Weekly](https://graphqlweekly.com): Newsletter all around GraphQL
