@@ -27,3 +27,10 @@ I intend to use these documents to make workshopper lessons. Any kind of contrib
 ## License
 
 MIT
+
+## More Resources
+
+- [How to GraphQL](www.howtographql.com): Fullstack Tutorial Website to Learn GraphQL 
+- [Explore GraphQL](www.graphql.com): Great collection of articles, case studies and real-world use cases all around GraphQL
+- [GraphQL Radio](www.graphqlradio.com): Podcast all around the GraphQL eco-system
+- [GraphQL Weekly](https://graphqlweekly.com): Newsletter all around GraphQL
