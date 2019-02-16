@@ -25,6 +25,7 @@ The Official Specification is meant for anyone who wants to implement GraphQL co
 I intend to use these documents to make workshopper lessons. Any kind of contributions are welcome, more if you feel like adding tasks and test suits in the workshopper.
 
 ## License
+
 MIT
 
 ## More Resources
